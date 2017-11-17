@@ -38,6 +38,14 @@ public class MainActivity extends Activity implements Fragment2.OnFragmentIntera
     }
 
     @Override
+    public void onBackPressed() {
+        if(!getFragmentManager().popBackStackImmediate()){
+            super.onBackPressed();
+        }
+
+    }
+
+    @Override
     public void onFragmentInteraction2(Uri uri) {
 
     }
