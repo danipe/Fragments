@@ -51,6 +51,14 @@ public class MainActivity extends Activity implements Fragment2.OnFragmentIntera
             return true;
     }
 
+    public boolean estaFragment2EnActivity() {
+        Fragment2 f3= (Fragment2)getFragmentManager().findFragmentById(R.id.canto_superior_dret);
+        if(f3==null)
+            return false;
+        else
+            return true;
+    }
+
     @Override
     public void onFragmentInteraction3(Uri uri) {
 

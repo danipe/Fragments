@@ -8,6 +8,7 @@ import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -36,7 +37,25 @@ public class Fragment1 extends Fragment {
                 fm = getFragmentManager();
                 ft = fm.beginTransaction();
                 ft.add(R.id.canto_superior_dret,Fragment2.newInstance("",""));
+                ft.addToBackStack(null);
                 ft.commit();
+            }
+        });
+        layoutF1.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Fragment f2 = getFragmentManager().findFragmentById(R.id.canto_superior_dret);
+                Fragment f3 = getFragmentManager().findFragmentById(R.id.canto_inferior_dret);
+                Fragment2.clicks=0;
+                if(f2!=null) {
+                    fm.popBackStack();
+                    Toast.makeText(getContext(),"Eliminamos fragment 2", Toast.LENGTH_SHORT).show();
+                }
+                if(f3!=null) {
+                    fm.popBackStack();
+                    Toast.makeText(getContext(),"Eliminamos fragment 3", Toast.LENGTH_SHORT).show();
+                }
+                return true;
             }
         });
         return v;

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -67,7 +68,9 @@ public class Fragment3 extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_fragment3, container, false);
-
+        TextView tv = v.findViewById(R.id.textView);
+        tv.setTextSize(Fragment2.clicks);
+        tv.setText("clicks: "+Fragment2.clicks);
         return v;
     }
 

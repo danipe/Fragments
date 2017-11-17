@@ -33,7 +33,7 @@ public class Fragment2 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    public static int clicks;
     private OnFragmentInteractionListener2 mListener;
 
     /**
@@ -78,18 +78,20 @@ public class Fragment2 extends Fragment {
         fl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                clicks++;
                 fm = getFragmentManager();
                 ft = fm.beginTransaction();
                 //si
                 if (!mListener.estaFragment3EnActivity()) {
                     Toast.makeText(getContext(), "Mostrant Fragment3", Toast.LENGTH_SHORT).show();
                     ft.add(R.id.canto_inferior_dret, Fragment3.newInstance("", ""));
-
+                    ft.addToBackStack(null);
 
                 }else{
                     Toast.makeText(getContext(), "Amagant Fragment3", Toast.LENGTH_SHORT).show();
-                    ft.remove(getActivity().getFragmentManager().findFragmentById(R.id.canto_inferior_dret));
+                    fm.popBackStack();
                 }
+
                 ft.commit();
             }
     });
